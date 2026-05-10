@@ -32,5 +32,7 @@ app.get("/getScores", (request, response) => {
 
 //score
 app.post("/getScores", (request, response) => {
-   
+    var leaderboard = "<add score from mongoDB>";
+    var variables = {leaderboard: leaderboard};
+   response.render("leaderboard", variables);
 });
