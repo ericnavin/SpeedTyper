@@ -14,4 +14,4 @@
 
 **Deployed App Link:** https://speedtyper-ek4h.onrender.com/
 
-**AI Use:** (None yet)
+**AI Use:** ChatGPT

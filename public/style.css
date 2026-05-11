@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   GLOBAL BODY (HOMEPAGE ONLY)
+   ========================= */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* =========================
+   HOMEPAGE STYLES
+   ========================= */
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 50px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  color: #60a5fa;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 30px;
+  color: #d1d5db;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.25s ease;
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #60a5fa;
+  color: #60a5fa;
+}
+
+.btn-secondary:hover {
+  background-color: #60a5fa;
+  color: #111827;
+  transform: translateY(-2px);
+}
+
+.footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* =========================
+   HOMEPAGE RESPONSIVE
+   ========================= */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  .container {
+    padding: 35px 25px;
+  }
+}
+
+/* =========================
+   TYPING PAGE (SCOPED)
+   IMPORTANT: requires <body class="typing-page">
+   ========================= */
+
+.typing-page {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  padding: 60px 20px;
+}
+
+/* Header */
+.typing-page .header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.typing-page .header h1 {
+  font-size: 3rem;
+  color: #60a5fa;
+  margin-bottom: 10px;
+}
+
+.typing-page .header p {
+  color: #d1d5db;
+  font-size: 1.1rem;
+}
+
+/* Stats */
+.typing-page .stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.typing-page .stat-box {
+  background-color: rgba(255,255,255,0.08);
+  padding: 15px 25px;
+  border-radius: 15px;
+  min-width: 150px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.typing-page .stat-title {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+
+.typing-page .stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+/* Paragraph container */
+.typing-page .text-container {
+  background-color: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 35px;
+  line-height: 2;
+  font-size: 1.2rem;
+  color: #f3f4f6;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  margin-bottom: 60px;
+}
+
+/* Typing box */
+.typing-page .typing-container {
+  background-color: #1f2937;
+  border-radius: 18px;
+  padding: 15px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.typing-page .typing-input {
+  width: 100%;
+  min-height: 80px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: transparent;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.typing-page .typing-input::placeholder {
+  color: #9ca3af;
+}

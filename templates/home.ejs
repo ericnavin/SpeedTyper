@@ -2,20 +2,30 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<title>Speed Typer</title>
-    <style>@import url(style.css);</style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Speed Typer</title>
+	<link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-	<h1>Speed Typer</h1>
+    <div class="container">
+        <h1>Speed Typer</h1>
+        <h2>How fast can you type dummy text?</h2>
+		<p>
+			Challenge yourself with randomly generated typing tests of dummy text,
+			track your typing speed, and compete for a spot on the leaderboard.
+		</p>
 
-	<h2>Test how fast you can Type!</h2>
-	<p>
-		TAKE THE TYPER CHALLENGE <a href="/typerTest">Test</a>
-	</p>
-    <br>
-	<hr>
+        <div class="button-group">
+            <a href="/type" class="btn btn-primary">Start Typing!</a>
+            <a href="/leaderboard" class="btn btn-secondary">View Leaderboard</a>
+        </div>
+
+        <div class="footer">
+            Powered by Bacon Ipsum API
+        </div>
+    </div>
 </body>
 
 </html>
