@@ -1,59 +1,164 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SpeedTyper Challenge</title>
-
+    <meta charset="UTF-8">
+    <title>Typing Challenge - SpeedTyper</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body class="typing-page">
-
-    <div class="page-container">
-
-        <div class="header">
+    <main>
+        <section class="header">
             <h1>Typing Challenge</h1>
             <p>Type the paragraph below as accurately and quickly as possible.</p>
-        </div>
+        </section>
 
-        <!-- STATS ROW -->
-        <div class="stats-container">
-
+        <section class="stats-container">
             <div class="stat-box">
                 <div class="stat-title">Time</div>
-                <div class="stat-value">60s</div>
+                <div class="stat-value" id="timeLeft">60s</div>
             </div>
 
             <div class="stat-box">
                 <div class="stat-title">Mistakes</div>
-                <div class="stat-value">0</div>
+                <div class="stat-value" id="mistakesCount">0</div>
             </div>
 
             <div class="stat-box">
                 <div class="stat-title">Progression</div>
-                <div class="stat-value">0%</div>
+                <div class="stat-value" id="progressValue">0%</div>
             </div>
+        </section>
 
-        </div>
+        <section class="text-container" id="targetText">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </section>
 
-        <div class="text-container">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat.
-        </div>
-
-        <div class="typing-container">
+        <section class="typing-container">
             <textarea
                 class="typing-input"
+                id="typingInput"
                 placeholder="Start typing here..."
+                autocomplete="off"
+                spellcheck="false"
             ></textarea>
-        </div>
+        </section>
 
-    </div>
+        <form id="resultsForm" action="/results" method="POST">
+            <input type="hidden" id="speedInput" name="speed">
+            <input type="hidden" id="mistakesInput" name="mistakes">
+        </form>
+    </main>
 
+    <script>
+        const targetText = document.getElementById("targetText").innerText.trim();
+        const typingInput = document.getElementById("typingInput");
+
+        const timeLeftDisplay = document.getElementById("timeLeft");
+        const mistakesDisplay = document.getElementById("mistakesCount");
+        const progressDisplay = document.getElementById("progressValue");
+
+        const resultsForm = document.getElementById("resultsForm");
+        const speedInput = document.getElementById("speedInput");
+        const mistakesInput = document.getElementById("mistakesInput");
+
+        let timeLeft = 60;
+        let timerStarted = false;
+        let timerId = null;
+        let testFinished = false;
+
+        function startTimer() {
+            timerStarted = true;
+
+            timerId = setInterval(function () {
+                timeLeft--;
+                timeLeftDisplay.textContent = timeLeft + "s";
+
+                if (timeLeft <= 0) {
+                    finishTest();
+                }
+            }, 1000);
+        }
+
+        function calculateMistakes(typedText, originalText) {
+            let mistakes = 0;
+
+            for (let i = 0; i < typedText.length; i++) {
+                if (typedText[i] !== originalText[i]) {
+                    mistakes++;
+                }
+            }
+
+            return mistakes;
+        }
+
+        function calculateProgress(typedText, originalText) {
+            let progress = Math.floor((typedText.length / originalText.length) * 100);
+
+            if (progress > 100) {
+                progress = 100;
+            }
+
+            return progress;
+        }
+
+        function calculateSpeed(typedText) {
+            const timeUsed = 60 - timeLeft;
+            const minutesUsed = timeUsed / 60;
+
+            if (minutesUsed <= 0) {
+                return 0;
+            }
+
+            /*
+                Standard WPM formula:
+                5 characters = 1 word
+            */
+            const wordsTyped = typedText.length / 5;
+            const speed = Math.round(wordsTyped / minutesUsed);
+
+            return speed;
+        }
+
+        function updateStats() {
+            const typedText = typingInput.value;
+
+            const mistakes = calculateMistakes(typedText, targetText);
+            const progress = calculateProgress(typedText, targetText);
+
+            mistakesDisplay.textContent = mistakes;
+            progressDisplay.textContent = progress + "%";
+
+            if (typedText.length >= targetText.length) {
+                finishTest();
+            }
+        }
+
+        function finishTest() {
+            if (testFinished) {
+                return;
+            }
+
+            testFinished = true;
+            clearInterval(timerId);
+
+            const typedText = typingInput.value;
+            const mistakes = calculateMistakes(typedText, targetText);
+            const speed = calculateSpeed(typedText);
+
+            speedInput.value = speed;
+            mistakesInput.value = mistakes;
+
+            resultsForm.submit();
+        }
+
+        typingInput.addEventListener("input", function () {
+            if (!timerStarted) {
+                startTimer();
+            }
+
+            updateStats();
+        });
+    </script>
 </body>
-
 </html>
