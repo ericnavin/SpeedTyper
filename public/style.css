@@ -25,12 +25,17 @@ body {
 .container {
   width: 100%;
   max-width: 700px;
-  background-color: rgba(255, 255, 255, 0.08);
+
+  background-color: rgba(17, 24, 39, 0.85); /* same as leaderboard */
   backdrop-filter: blur(8px);
+
   border-radius: 20px;
   padding: 50px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(96, 165, 250, 0.15);
 }
 
 h1 {
@@ -151,12 +156,22 @@ p {
 }
 
 .typing-page .stat-box {
-  background-color: rgba(255,255,255,0.08);
-  padding: 15px 25px;
+  background-color: rgba(17, 24, 39, 0.85); /* same as other pages */
   border-radius: 15px;
+  padding: 15px 25px;
   min-width: 150px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(96, 165, 250, 0.12);
+
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease;
+}
+
+.typing-page .stat-box:hover {
+  transform: translateY(-3px);
 }
 
 .typing-page .stat-title {
@@ -193,7 +208,7 @@ p {
 
 .typing-page .typing-input {
   width: 100%;
-  min-height: 80px;
+  min-height: 50px;
   border: none;
   outline: none;
   resize: none;
@@ -206,4 +221,280 @@ p {
 
 .typing-page .typing-input::placeholder {
   color: #9ca3af;
+}
+
+ /* =========================
+   RESULTS PAGE (SCOPED)
+   Requires: <body class="results-page">
+   ========================= */
+.results-page .results-container {
+  width: 100%;
+  max-width: 700px;
+
+  background-color: rgba(17, 24, 39, 0.85); /* unified glass tone */
+  border-radius: 20px;
+  padding: 50px;
+
+  text-align: center;
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(96, 165, 250, 0.12);
+
+  backdrop-filter: blur(8px);
+
+  transition: transform 0.2s ease;
+}
+
+/* Title */
+.results-page h1 {
+  font-size: 3rem;
+  color: #60a5fa;
+  margin-bottom: 30px;
+}
+
+/* Stats layout */
+.results-page .stats {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.results-page .username-section {
+  margin-top: 25px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.results-page .username-section label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
+
+.results-page .username-section input {
+  width: 100%;
+  max-width: 320px;
+
+  padding: 12px 15px;
+  border-radius: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(17, 24, 39, 0.85);
+
+  color: white;
+  font-size: 1rem;
+  outline: none;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(96, 165, 250, 0.08);
+
+  transition: 0.2s ease;
+}
+
+.results-page .username-section input:focus {
+  border-color: #60a5fa;
+  box-shadow:
+    0 0 0 2px rgba(96, 165, 250, 0.25);
+}
+
+/* Stat boxes */
+.results-page .stat-box {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 20px 30px;
+  border-radius: 15px;
+  min-width: 180px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Labels */
+.results-page .label {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+/* Values */
+.results-page .value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+/* Buttons */
+.results-page .button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+/* Primary button */
+.results-page .btn-primary {
+  padding: 15px 25px;
+  border-radius: 10px;
+  background-color: #3b82f6;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.25s ease;
+}
+
+.results-page .btn-primary:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Secondary button */
+.results-page .btn-secondary {
+  padding: 15px 25px;
+  border-radius: 10px;
+  border: 2px solid #60a5fa;
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.25s ease;
+}
+
+.results-page .btn-secondary:hover {
+  background-color: #60a5fa;
+  color: #111827;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .results-page h1 {
+    font-size: 2.2rem;
+  }
+}
+
+ /* =========================
+   LEADERBOARD PAGE (SCOPED)
+   Requires: <body class="leaderboard-page">
+   ========================= */
+
+.leaderboard-page {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+  padding: 60px 20px;
+}
+
+/* Container */
+.leaderboard-page .leaderboard-container {
+  width: 100%;
+  max-width: 600px;
+
+  min-height: 75vh;   
+
+  background-color: rgba(17, 24, 39, 0.85);
+  border-radius: 20px;
+  padding: 50px 40px;
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(96, 165, 250, 0.15);
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Title */
+.leaderboard-page h1 {
+  font-size: 3rem;
+  color: #60a5fa;
+  margin-bottom: 30px;
+}
+
+/* Table */
+.leaderboard-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Header */
+.leaderboard-page thead {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.leaderboard-page th,
+.leaderboard-page td {
+  padding: 14px 12px;
+  text-align: center;
+}
+
+/* Header text */
+.leaderboard-page th {
+  font-size: 1rem;
+  color: #d1d5db;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Body rows */
+.leaderboard-page td {
+  font-size: 1rem;
+  color: #f3f4f6;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Hover effect */
+.leaderboard-page tr:hover {
+  background-color: rgba(96, 165, 250, 0.08);
+}
+
+/* Position column */
+.leaderboard-page .pos {
+  color: #60a5fa;
+  font-weight: bold;
+}
+
+/* Button container */
+.leaderboard-page .button-group {
+  margin-top: 35px;
+}
+
+/* Home button */
+.leaderboard-page .btn-home {
+  display: inline-block;
+  padding: 15px 25px;
+  border-radius: 10px;
+  background-color: #3b82f6;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.25s ease;
+}
+
+.leaderboard-page .btn-home:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .leaderboard-page h1 {
+    font-size: 2.2rem;
+  }
+
+  .leaderboard-page th,
+  .leaderboard-page td {
+    font-size: 0.9rem;
+  }
 }

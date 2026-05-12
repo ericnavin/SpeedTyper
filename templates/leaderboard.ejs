@@ -3,19 +3,39 @@
 
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Leaderboard</title>
-    <style>@import url(style.css);</style>
+
+	<link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
-	<h1>Leaderboard</h1>
-    <br><br>
-    
-	<div>
-		<%- leaderboard %>
-		<br>
-		
+<body class="leaderboard-page">
+
+	<div class="leaderboard-container">
+
+		<h1>Leaderboard</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Pos</th>
+					<th>Name</th>
+					<th>Speed</th>
+					<th>Mistakes</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<%- leaderboard %>
+			</tbody>
+		</table>
+
+		<div class="button-group">
+			<a href="/" class="btn-home">Back to Home</a>
+		</div>
+
 	</div>
+
 </body>
 
 </html>

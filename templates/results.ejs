@@ -2,15 +2,58 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Speed Typer</title>
-	<link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Results - SpeedTyper</title>
+
+  <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
-</body>
+<body class="results-page">
 
-<!-- TODO: This is the page where the user views their results -->
+  <div class="results-container">
+
+    <h1>Results</h1>
+
+    <div class="stats">
+
+      <div class="stat-box">
+        <div class="label">Mistakes</div>
+        <div class="value"><%= mistakes %></div>
+      </div>
+
+      <div class="stat-box">
+        <div class="label">Speed</div>
+        <div class="value"><%= speed %></div>
+      </div>
+
+    </div>
+
+<div class="username-section">
+  <label for="username">Enter your username:</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+    placeholder="e.g. speedmaster123"
+    maxlength="20"
+  />
+</div>
+
+    <div class="button-group">
+
+      <a href="/save-score" class="btn-primary">
+        Save Score & Continue
+      </a>
+
+      <a href="/" class="btn-secondary">
+        Skip & Continue
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
 
 </html>

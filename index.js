@@ -60,16 +60,41 @@ if (args.length != 2) {
         response.render("home");
     });
 
-    // Type Challenge Page
+    // Type Challenge
     app.get("/type", (request, response) => {
         response.render("type");
     });
 
     // Leaderboard
     app.get("/leaderboard", (request, response) => {
-        response.render("leaderboard");
+        let leaderboard = `
+            <tr>
+            <td class="pos">1</td>
+            <td>PlayerOne</td>
+            <td>75 WPM</td>
+            <td>2</td>
+            </tr>
+            <tr>
+            <td class="pos">2</td>
+            <td>PlayerTwo</td>
+            <td>62 WPM</td>
+            <td>4</td>
+            </tr>
+            `;
+        const variables = {
+            "leaderboard": leaderboard,
+        }
+        response.render("leaderboard", variables);
     });
 
+    // Results
+    app.get("/results", (request, response) => {
+        const variables = {
+            "speed": 0,
+            "mistakes": 0,
+        }
+        response.render("results", variables);
+    });
     
 
     // //test
