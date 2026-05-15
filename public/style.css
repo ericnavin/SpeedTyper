@@ -35,6 +35,7 @@ h1 {
   font-size: 4rem;
   margin-bottom: 15px;
   color: #60a5fa;
+  font-family: 'Raleway';
 }
 
 h2 {
@@ -42,6 +43,7 @@ h2 {
   font-weight: normal;
   margin-bottom: 30px;
   color: #d1d5db;
+  font-family: 'Raleway';
 }
 
 p {
