@@ -498,3 +498,11 @@ p {
     font-size: 0.9rem;
   }
 }
+
+.correct {
+  color: #6b7280;
+}
+
+.incorrect {
+  color: #ef4444;
+}
