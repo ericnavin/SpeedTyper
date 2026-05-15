@@ -12,6 +12,6 @@
 
 **Contact Email:** garantae@terpmail.umd.edu
 
-**Deployed App Link:** https://speedtyper-ek4h.onrender.com/
+**Deployed App Link:** https://speedtyper-4rkd.onrender.com/
 
 **AI Use:** ChatGPT
