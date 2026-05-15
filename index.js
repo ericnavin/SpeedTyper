@@ -78,6 +78,22 @@ async function connectToMongoDB() {
     }
 }
 
+async function addScore(user, speedEnter, mistakesEnter){
+    try{
+        connectToMongoDB();
+        const score = new Score({
+            username : user,
+            speed : speedEnter,
+            mistakes : mistakesEnter,
+            dateCreated : Date.now(),
+        });
+        mongoose.disconnect();
+    }catch(err){
+        console.error(err);
+    }
+    
+}
+
 /*
     Homepage
 */
@@ -104,10 +120,13 @@ app.get("/type", (request, response) => {
     It displays speed and mistakes as 0 until your typing page sends real values.
 */
 
-app.get("/results", (request, response) => {
+app.post("/results", (request, response) => {
+    let speed = Number(request.body.speed);
+    let mistakes = Number(request.body.mistakes);
+
     const variables = {
-        speed: 0,
-        mistakes: 0,
+        speed:  speed,
+        mistakes: mistakes,
     };
 
     response.render("results", variables);
@@ -144,7 +163,8 @@ app.post("/save-score", async (request, response) => {
         await Score.create({
             username: username,
             speed: speed,
-            mistakes: mistakes
+            mistakes: mistakes,
+            dateCreated : Date.now(),
         });
 
         response.redirect("/leaderboard");
