@@ -283,7 +283,7 @@ app.get("/scoreSearch", async (request, response) => {
 app.post("/scoreSearchResults", async (request, response) => {
     let user = request.body.username;
     try {
-        const scores = await Score.find({})
+        const scores = await Score.find({username: user})
             .sort({ mistakes: 1, speed: -1, dateCreated: 1 })
             .limit(10);
 
@@ -292,7 +292,7 @@ app.post("/scoreSearchResults", async (request, response) => {
         if (scores.length === 0) {
             leaderboard = `
                 <tr>
-                    <td colspan="4">No scores saved yet by username: ${user} </td>
+                    <td colspan="4">No scores saved yet by username: ${user}</td>
                 </tr>
             `;
         } else {
