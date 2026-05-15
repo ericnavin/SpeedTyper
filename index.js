@@ -2,10 +2,8 @@
 
 const path = require("path");
 const express = require("express");
-
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const score = require("./routes/scores.js");
 
 require("dotenv").config({
     path: path.resolve(__dirname, "credentials/.env"),
@@ -61,6 +59,10 @@ const scoreSchema = new mongoose.Schema({
 });
 
 const Score = mongoose.model("Score", scoreSchema);
+
+// import and use the scores router
+const scoresRouter = require("./routes/scores");
+app.use("/", scoresRouter);
 
 /*
     Connect to MongoDB using Mongoose.
@@ -276,6 +278,3 @@ if (args.length != 2) {
         });
     });
 }
-
-
-app.use("/scoreLookUp", score);

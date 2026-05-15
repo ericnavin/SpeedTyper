@@ -1,5 +1,9 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
+
+const Score = mongoose.model("Score");
+
 //get to search up form
 router.get("/scoreSearch", async (request, response) => {
     response.render("findScore");
@@ -37,7 +41,7 @@ router.post("/scoreSearchResults", async (request, response) => {
             leaderboard: leaderboard,
         };
 
-        response.render("showSCore", variables);
+        response.render("showScore", variables);
     } catch (error) {
         console.error("Error loading leaderboard:", error);
         response.status(500).send("There was a problem loading the leaderboard.");
