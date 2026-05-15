@@ -78,22 +78,6 @@ async function connectToMongoDB() {
     }
 }
 
-async function addScore(user, speedEnter, mistakesEnter){
-    try{
-        connectToMongoDB();
-        const score = new Score({
-            username : user,
-            speed : speedEnter,
-            mistakes : mistakesEnter,
-            dateCreated : Date.now(),
-        });
-        mongoose.disconnect();
-    }catch(err){
-        console.error(err);
-    }
-    
-}
-
 /*
     Homepage
 */
@@ -308,7 +292,7 @@ app.post("/scoreSearchResults", async (request, response) => {
         if (scores.length === 0) {
             leaderboard = `
                 <tr>
-                    <td colspan="4">No scores saved yet by username: $user </td>
+                    <td colspan="4">No scores saved yet by username: ${user} </td>
                 </tr>
             `;
         } else {
@@ -328,7 +312,7 @@ app.post("/scoreSearchResults", async (request, response) => {
             leaderboard: leaderboard,
         };
 
-        response.render("showSCore", variables);
+        response.render("showScore", variables);
     } catch (error) {
         console.error("Error loading leaderboard:", error);
         response.status(500).send("There was a problem loading the leaderboard.");
