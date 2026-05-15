@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const args = process.argv;
 const uri = process.env.MONGO_CONNECTION_STRING;
-const portNumber = 5000;
+const portNumber = process.env.PORT || 5000;
 
 /*
     Mongoose Schema and Model
