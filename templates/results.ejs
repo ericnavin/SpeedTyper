@@ -6,33 +6,36 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
-    <main class="results-page">
+<body class="results-page">
+    <div class="results-container">
         <h1>Results</h1>
 
-        <section class="results-card">
-            <div class="result-item">
-                <h2>Mistakes</h2>
-                <p><%= mistakes %></p>
-            </div>
+<div class="stats">
+    <div class="stat-box">
+        <div class="label">Mistakes</div>
+        <div class="value"><%= mistakes %></div>
+    </div>
 
-            <div class="result-item">
-                <h2>Speed</h2>
-                <p><%= speed %> WPM</p>
-            </div>
-        </section>
+    <div class="stat-box">
+        <div class="label">Speed</div>
+        <div class="value"><%= speed %></div>
+    </div>
+</div>
+    
 
         <form action="/save-score" method="POST" class="save-score-form">
-            <label for="username">Enter your username:</label>
+            <div class="username-section">
+                <label for="username">Enter your username:</label>
 
-            <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Enter username"
-                maxlength="20"
-                required
-            >
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter username"
+                    maxlength="20"
+                    required
+                >
+            </div>
 
             <input type="hidden" name="speed" value="<%= speed %>">
             <input type="hidden" name="mistakes" value="<%= mistakes %>">
@@ -47,6 +50,6 @@
                 </a>
             </div>
         </form>
-    </main>
+    </div>
 </body>
 </html>
