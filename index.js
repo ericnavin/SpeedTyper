@@ -146,6 +146,15 @@ app.post("/results", (request, response) => {
     using method="POST" and action="/save-score"
 */
 
+app.get("/results", (request, response) => {
+    const variables = {
+        "mistakes": 0,
+        "speed": 0,
+    };
+
+    response.render("results", variables);
+});
+
 app.post("/save-score", async (request, response) => {
     try {
         const username = request.body.username;
@@ -248,10 +257,12 @@ if (args.length != 2) {
                         if (command === "stop") {
                             process.stdout.write("Shutting down the server\n");
 
-                            server.close(async () => {
-                                await mongoose.connection.close();
-                                process.exit(0);
-                            });
+                            mongoose.disconnect();
+                            process.exit(0);
+                            // server.close(async () => {
+                            //     await mongoose.connection.close();
+                            //     process.exit(0);
+                            // });
                         } else {
                             process.stdout.write(`Invalid command: ${command}\n`);
                             process.stdout.write(prompt);
