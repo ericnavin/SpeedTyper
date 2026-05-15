@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Typing Challenge - SpeedTyper</title>
@@ -30,18 +31,11 @@
             </div>
         </section>
 
-        <section class="text-container" id="targetText">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </section>
+        <section class="text-container" id="targetText"></section>
 
         <section class="typing-container">
-            <textarea
-                class="typing-input"
-                id="typingInput"
-                placeholder="Start typing here..."
-                autocomplete="off"
-                spellcheck="false"
-            ></textarea>
+            <textarea class="typing-input" id="typingInput" placeholder="Start typing here..." autocomplete="off"
+                spellcheck="false"></textarea>
         </section>
 
         <form id="resultsForm" action="/results" method="post">
@@ -51,7 +45,18 @@
     </main>
 
     <script>
-        const targetText = document.getElementById("targetText").innerText.trim();
+        const paragraph = `<%- paragraph %>`;
+
+        const targetTextElement = document.getElementById("targetText");
+
+        targetTextElement.innerHTML = paragraph
+            .split("")
+            .map(letter => `<span>${letter}</span>`)
+            .join("");
+
+        const letters = document.querySelectorAll("#targetText span");
+
+        const targetText = paragraph;
         const typingInput = document.getElementById("typingInput");
 
         const timeLeftDisplay = document.getElementById("timeLeft");
@@ -129,6 +134,23 @@
             mistakesDisplay.textContent = mistakes;
             progressDisplay.textContent = progress + "%";
 
+            letters.forEach((letter, index) => {
+                const typedChar = typedText[index];
+
+                if (typedChar == null) {
+                    letter.classList.remove("correct");
+                    letter.classList.remove("incorrect");
+                }
+                else if (typedChar === targetText[index]) {
+                    letter.classList.add("correct");
+                    letter.classList.remove("incorrect");
+                }
+                else {
+                    letter.classList.add("incorrect");
+                    letter.classList.remove("correct");
+                }
+            });
+
             if (typedText.length >= targetText.length) {
                 finishTest();
             }
@@ -161,4 +183,5 @@
         });
     </script>
 </body>
+
 </html>
