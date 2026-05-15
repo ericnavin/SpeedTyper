@@ -6,7 +6,7 @@
 
 **App Description:** Tracks the speed and number of typing mistakes a user makes when typing paragraphs of dummy/placeholder texts known as lorem ipsum. Results are stored and retrieved as a ranking that is sorted by a combination of speed and number of mistakes, with mistakes taking priority over speed.
 
-**YouTube Video Link:** (None, added later)
+**YouTube Video Link:** https://youtu.be/N_5YADLeo-o?si=MdzJ4cvkxcN5gUuj
 
 **APIs:** Bacon Ipsum (https://baconipsum.com/json-api/)
 
