@@ -109,8 +109,21 @@ app.get("/", (request, response) => {
     Later, you can pass generated Bacon Ipsum text here.
 */
 
-app.get("/type", (request, response) => {
-    response.render("type");
+app.get("/type", async (request, response) => {
+    let paragraph = "Bacon ipsum dolor amet brisket ribeye ham hock sausage. Pork belly bacon meatball tenderloin short ribs.";
+
+    try {
+        const apiResponse = await fetch("https://baconipsum.com/api/?type=meat-and-filler&paras=1&format=json");
+        const data = await apiResponse.json();
+
+        paragraph = data[0];
+    } catch (error) {
+        console.error("Bacon API failed:", error);
+    }
+
+    response.render("type", {
+        paragraph: paragraph
+    });
 });
 
 /*
