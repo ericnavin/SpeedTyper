@@ -1,6 +1,6 @@
 # SpeedTyper
 
-**Submitted by:** (Person that submits the project)
+**Submitted by:** Grant Thongthai
 
 **Group Members:** Grant Thongthai (garantae), Eric Navincopa (ericnav), Natalie Figueira (nfigueir), Sahil Mehta (smehta20), William Chiang (wchiang8)
 

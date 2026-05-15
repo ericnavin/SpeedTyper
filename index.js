@@ -34,7 +34,6 @@ const portNumber = process.env.PORT || 5000;
     - mistakes
     - dateCreated
 */
-
 const scoreSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -64,14 +63,6 @@ const Score = mongoose.model("Score", scoreSchema);
 const scoresRouter = require("./routes/scores");
 app.use("/", scoresRouter);
 
-/*
-    Connect to MongoDB using Mongoose.
-
-    The connection string should be inside credentials/.env like this:
-
-    MONGO_CONNECTION_STRING=mongodb+srv://username:password@clustername.mongodb.net/speedtyper?retryWrites=true&w=majority
-*/
-
 async function connectToMongoDB() {
     try {
         await mongoose.connect(uri);
@@ -82,20 +73,9 @@ async function connectToMongoDB() {
     }
 }
 
-/*
-    Homepage
-*/
-
 app.get("/", (request, response) => {
     response.render("home");
 });
-
-/*
-    Type Challenge
-
-    For now, this renders your typing page.
-    Later, you can pass generated Bacon Ipsum text here.
-*/
 
 app.get("/type", async (request, response) => {
     let paragraph = "Bacon ipsum dolor amet brisket ribeye ham hock sausage. Pork belly bacon meatball tenderloin short ribs.";
@@ -114,13 +94,6 @@ app.get("/type", async (request, response) => {
     });
 });
 
-/*
-    Results Page
-
-    Right now, this keeps your original behavior.
-    It displays speed and mistakes as 0 until your typing page sends real values.
-*/
-
 app.post("/results", (request, response) => {
     let speed = Number(request.body.speed);
     let mistakes = Number(request.body.mistakes);
@@ -132,20 +105,6 @@ app.post("/results", (request, response) => {
 
     response.render("results", variables);
 });
-
-/*
-    Save Score
-
-    This route saves a score into MongoDB.
-
-    IMPORTANT:
-    Your results.ejs file needs a form that sends:
-    - username
-    - speed
-    - mistakes
-
-    using method="POST" and action="/save-score"
-*/
 
 app.get("/results", (request, response) => {
     const variables = {
@@ -183,17 +142,6 @@ app.post("/save-score", async (request, response) => {
         response.status(500).send("There was a problem saving your score.");
     }
 });
-
-/*
-    Leaderboard
-
-    This pulls scores from MongoDB instead of using fake hardcoded data.
-
-    Sorting:
-    1. Lowest mistakes first
-    2. Highest speed second
-    3. Oldest score first if there is a tie
-*/
 
 app.get("/leaderboard", async (request, response) => {
     try {
@@ -233,12 +181,6 @@ app.get("/leaderboard", async (request, response) => {
     }
 });
 
-/*
-    Start Server
-
-    The server only starts after MongoDB connects successfully.
-*/
-
 if (args.length != 2) {
     process.exit(1);
 } else {
@@ -257,7 +199,6 @@ if (args.length != 2) {
                     if (command !== null) {
                         if (command === "stop") {
                             process.stdout.write("Shutting down the server\n");
-
                             mongoose.disconnect();
                             process.exit(0);
                             // server.close(async () => {
