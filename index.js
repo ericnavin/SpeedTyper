@@ -266,3 +266,12 @@ if (args.length != 2) {
         });
     });
 }
+
+//get to search up form
+app.get("/scoreSearch", async (request, response) => {
+    response.render("findScore");
+});
+
+app.get("/scoreSearchResults", async (request, response) => {
+    //WORKING ON IT RIGHT NOW - NATALIE
+});

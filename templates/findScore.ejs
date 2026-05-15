@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Results - SpeedTyper</title>
+    <title>Score Search Up - SpeedTyper</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
     <main class="results-page">
-        <h1>Results</h1>
+        <h1>Search Up Score</h1>
 
         <section class="results-card">
             <div class="result-item">
-                <h2>Mistakes</h2>
-                <p><%= mistakes %></p>
-            </div>
-
-            <div class="result-item">
-                <h2>Speed</h2>
-                <p><%= speed %> WPM</p>
+                <h2>Enter a username and get their score stats!</h2>
             </div>
         </section>
 
-        <form action="/save-score" method="POST" class="save-score-form">
+        <form action="/scoreSearchResults" method="POST" class="save-score-form">
             <label for="username">Enter your username:</label>
 
             <input
@@ -34,17 +28,14 @@
                 required
             >
 
-            <input type="hidden" name="speed" value="<%= speed %>">
-            <input type="hidden" name="mistakes" value="<%= mistakes %>">
-
             <div class="button-group">
                 <button type="submit" class="btn btn-primary">
-                    Save Score & Continue
+                    Submit Entry!
                 </button>
 
-                <a href="/" class="btn btn-secondary">
-                    Skip & Continue
-                </a>
+                <div class="button-group">
+                    <a href="/" class="btn btn-secondary">Back to Home</a>
+                </div>
             </div>
         </form>
     </main>

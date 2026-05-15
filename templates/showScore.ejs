@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Leaderboard</title>
+
+	<link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="leaderboard-page">
+
+	<div class="leaderboard-container">
+
+		<h1>User Scores Results</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Pos</th>
+					<th>Name</th>
+					<th>Speed</th>
+					<th>Mistakes</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<%- leaderboard %>
+			</tbody>
+		</table>
+
+		<div class="button-group">
+			<a href="/" class="btn-home">Back to Home</a>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
