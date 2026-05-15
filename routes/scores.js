@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 //get to search up form
-app.get("/scoreSearch", async (request, response) => {
+router.get("/scoreSearch", async (request, response) => {
     response.render("findScore");
 });
 
@@ -43,3 +43,5 @@ router.post("/scoreSearchResults", async (request, response) => {
         response.status(500).send("There was a problem loading the leaderboard.");
     }
 });
+
+module.exports = router;
